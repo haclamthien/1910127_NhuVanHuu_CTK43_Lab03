@@ -424,6 +424,7 @@ namespace Lab03
             this.tsmi_file_open.Name = "tsmi_file_open";
             this.tsmi_file_open.Size = new System.Drawing.Size(224, 26);
             this.tsmi_file_open.Text = "Mở FIle";
+            this.tsmi_file_open.Click += new System.EventHandler(this.tsmi_file_open_Click);
             // 
             // tsmi_file_exit
             // 
@@ -448,7 +449,7 @@ namespace Lab03
             // 
             this.tsmi_edit_add.Image = global::Lab03.Properties.Resources.icons8_add_20;
             this.tsmi_edit_add.Name = "tsmi_edit_add";
-            this.tsmi_edit_add.Size = new System.Drawing.Size(224, 26);
+            this.tsmi_edit_add.Size = new System.Drawing.Size(146, 26);
             this.tsmi_edit_add.Text = "Thêm";
             this.tsmi_edit_add.Click += new System.EventHandler(this.tsmi_edit_add_Click);
             // 
@@ -456,7 +457,7 @@ namespace Lab03
             // 
             this.tsmi_edit_remove.Image = global::Lab03.Properties.Resources.icons8_remove_20;
             this.tsmi_edit_remove.Name = "tsmi_edit_remove";
-            this.tsmi_edit_remove.Size = new System.Drawing.Size(224, 26);
+            this.tsmi_edit_remove.Size = new System.Drawing.Size(146, 26);
             this.tsmi_edit_remove.Text = "Xóa";
             this.tsmi_edit_remove.Click += new System.EventHandler(this.tsmi_edit_remove_Click);
             // 
@@ -464,7 +465,7 @@ namespace Lab03
             // 
             this.tsmi_edit_fix.Image = global::Lab03.Properties.Resources.icons8_support_20;
             this.tsmi_edit_fix.Name = "tsmi_edit_fix";
-            this.tsmi_edit_fix.Size = new System.Drawing.Size(224, 26);
+            this.tsmi_edit_fix.Size = new System.Drawing.Size(146, 26);
             this.tsmi_edit_fix.Text = "Sửa";
             this.tsmi_edit_fix.Click += new System.EventHandler(this.tsmi_edit_fix_Click);
             // 
@@ -476,7 +477,7 @@ namespace Lab03
             this.tsmi_edit_sort,
             this.tsmi_edit_search});
             this.listViewToolStripMenuItem.Name = "listViewToolStripMenuItem";
-            this.listViewToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.listViewToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.listViewToolStripMenuItem.Text = "ListView";
             // 
             // tsmi_edit_lv_font
@@ -497,7 +498,7 @@ namespace Lab03
             // 
             this.tsmi_edit_sort.Image = global::Lab03.Properties.Resources.icons8_alphabetical_sorting_20;
             this.tsmi_edit_sort.Name = "tsmi_edit_sort";
-            this.tsmi_edit_sort.Size = new System.Drawing.Size(224, 26);
+            this.tsmi_edit_sort.Size = new System.Drawing.Size(155, 26);
             this.tsmi_edit_sort.Text = "Sắp Xếp";
             this.tsmi_edit_sort.Click += new System.EventHandler(this.tsmi_edit_sort_Click);
             // 
@@ -505,7 +506,7 @@ namespace Lab03
             // 
             this.tsmi_edit_search.Image = global::Lab03.Properties.Resources.icons8_search_20;
             this.tsmi_edit_search.Name = "tsmi_edit_search";
-            this.tsmi_edit_search.Size = new System.Drawing.Size(224, 26);
+            this.tsmi_edit_search.Size = new System.Drawing.Size(155, 26);
             this.tsmi_edit_search.Text = "Tìm Kiếm";
             this.tsmi_edit_search.Click += new System.EventHandler(this.tsmi_edit_search_Click);
             // 

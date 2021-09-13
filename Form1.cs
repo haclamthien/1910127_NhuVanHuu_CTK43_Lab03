@@ -15,6 +15,7 @@ namespace Lab03
     public partial class FrormMain : Form
     {
         QuanLySinhVien qlsv;
+        string _filename = "data\\data.txt";
         public FrormMain()
         {
             InitializeComponent();
@@ -132,7 +133,7 @@ namespace Lab03
         private void FrormMain_Load(object sender, EventArgs e)
         {
             qlsv = new QuanLySinhVien();
-            qlsv.DocTuFile();
+            qlsv.DocTuFile(_filename);
             LoadDsSVToLv();
         }
 
@@ -159,7 +160,7 @@ namespace Lab03
             else
             {
                 qlsv.ThemSV(sv);
-               qlsv.SaveChange();
+               qlsv.SaveChange(_filename);
                 LoadDsSVToLv();
             }
         }
@@ -181,9 +182,9 @@ namespace Lab03
             {
                 lvitem = this.lv_Students.Items[i];
                 if (lvitem.Checked)
-                    qlsv.Xoa(lvitem.SubItems[0].Text, SoSanhTheoMa);
+                { qlsv.Xoa(lvitem.SubItems[0].Text, SoSanhTheoMa); }
             }
-            
+            qlsv.SaveChange(_filename);
             this.LoadDsSVToLv();
             btn_Default.PerformClick();
         }
@@ -206,7 +207,11 @@ namespace Lab03
             SinhVien sv = GetSinhVien();
             bool kq;
             kq = qlsv.Sua(sv, sv.MaSo, SoSanhTheoMa);
-            if (kq == true) this.LoadDsSVToLv();
+            if (kq == true)
+            {
+                qlsv.SaveChange(_filename);
+                this.LoadDsSVToLv();
+            }
         }
 
         private void btn_AddImage_Click(object sender, EventArgs e)
@@ -244,20 +249,20 @@ namespace Lab03
             {
                 qlsv.DanhSachSV.Sort((x, y) => x.MaSo.CompareTo(y.MaSo));
                 LoadTTSVToLV(qlsv.DanhSachSV);
-                qlsv.SaveChange();
+                qlsv.SaveChange(_filename);
             }
             else if(frm.result == "Họ Tên")
             {
                 
                 qlsv.DanhSachSV.Sort((x, y) => x.HoTen.Trim().CompareTo(y.HoTen.Trim()));
-                qlsv.SaveChange();
+                qlsv.SaveChange(_filename);
                 LoadTTSVToLV(qlsv.DanhSachSV);
             }
             else
             {
                 qlsv.DanhSachSV.Sort((x, y) => x.NgaySinh.CompareTo(y.NgaySinh));
                 LoadTTSVToLV(qlsv.DanhSachSV);
-                qlsv.SaveChange();
+                qlsv.SaveChange(_filename);
             }
         }
         private void LoadTTSVToLV(List<SinhVien> dsSv)
@@ -354,6 +359,21 @@ namespace Lab03
         private void tsmi_edit_search_Click(object sender, EventArgs e)
         {
             contextMenu_Search_Click(sender, e);
+        }
+
+        private void tsmi_file_open_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Title = "Select Data file";
+            dlg.Filter = "Text|*.txt";
+            dlg.InitialDirectory = Environment.CurrentDirectory;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                _filename = dlg.FileName;
+                qlsv.ClearData();
+                qlsv.DocTuFile(_filename);
+                LoadTTSVToLV(qlsv.DanhSachSV);
+            }
         }
     }
 }

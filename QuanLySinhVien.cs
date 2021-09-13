@@ -35,24 +35,12 @@ namespace Lab03
                 if (ss(obj1, this[i]) == 0)
                     this.DanhSachSV.RemoveAt(i);
             }
-            SaveChange();
         }
-        public void SapXep()
+        public void ClearData()
         {
-            SinhVien temp = new SinhVien();
-            for(int i=0; i<DanhSachSV.Count; i++)
-            {
-                for(int y = i+1; y<DanhSachSV.Count -1; y++)
-                {
-                    if(this[i].HoTen.Substring(this[i].HoTen.LastIndexOf(' ')).CompareTo(this[i].HoTen.Substring(this[y].HoTen.LastIndexOf(' '))) > 0)
-                    {
-                        temp = this[i];
-                        this[i] = this[y];
-                        this[y] = temp;
-                    }
-                }
-            }
+            DanhSachSV.Clear();
         }
+        
         public SinhVien Tim(object obj1, SoSanh ss)
         {
             SinhVien sv = null;
@@ -78,12 +66,12 @@ namespace Lab03
                     break;
                 }
             }
-            SaveChange();
+            
             return kq;
         }
-        public void DocTuFile()
+        public void DocTuFile(String filename)
         {
-            String filename = "data\\data.txt", line;
+            String  line;
             string[] strs;
             SinhVien sv;
             using (var stream = new FileStream(filename, FileMode.Open, FileAccess.Read))
@@ -118,10 +106,9 @@ namespace Lab03
                 }
             }
         }
-        public void SaveChange()
+        public void SaveChange(String filename)
         {
             int count = 0;
-            String filename = "data\\data.txt", line;
             using (var stream = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite))
             {
                 using (var write = new StreamWriter(stream))
